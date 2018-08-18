@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Graph API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAeFBMVEX///87WZgkSpE2VZb5+vzi5/AsT5MpTZJpfKs4V5fR1uQ9W5syU5UvUZQhSJAmS5HIz+CgrMpYb6TK0N++xtmPnsFKZZ+3wNZ3ibTt8PZwg7Dm6vLByNr09fhid6ixu9OAkbmnssyHlbkWQo3X3elOaaKZpsZDX5sd9hxqAAADxUlEQVR4nO3c2XLiMBAFUIONhIkXcNiXsAw4//+H46SKzIIay0tVq8U9lcc89C3ZFpZaDgIAAAAAAAAAAAAAAAAAAAAAAAAAAACAfkWb3aiyOXAX0rdoMzmW22KQZcN8+CXL1PLjcp5yF9aL6Dpb3/JcJUk4+Esch4kuuIvrweSy1GkYD4zCMXd5nc1vOiXSeZFwv9QhHe8r4Za7xE422/zJ8H1L1txFdjGNk5p81RhKTjjLavNVY3jiLrO9RW4RUHLCUtsEHKQL7kLbWg2tAg4SqQlHWd1D9D6GJXepLRXPZ8G/Es64S23naHcTVtSZu9ZWDgPLa7QawyN3sa3MlG3AgVpxF9uK7U1Y0XPuYtuYW9+FVcI9d7VtfDQZw3fualvYPXsffEg44S63hZX9c0ZownXNRRpXwjt95S63uej2bNFCqbfl7Vb8WApMuEvpfHp8HG2iiLvEjqbkXJFIHDCDGTWGqexFpz8uxOJMXEi/Ou+2xKNU+bF+XynMj9L4k7uwvkRLc0KxyxUPok9zQqEvggbRG3EbIqEYL5xQ5nKFARLKh4TyvW5CjYRikAlFLm6bIKF8r5tQidyCMfE/YUAlFLkQdf0YPyLW9ONiu12vT6fTZbEoy3J2Ph+Pq/l873ar8CQLH5CbFnEYJtVfJU3SNFXVn9J6uOMO8dR7g81eIrbja4z7zglDx5ugm2zYEwkdb75stNtr5HpL1LFzQtd/6ZzpzVDbhI5v4587j2G24c7wHLkZai3njlCj7JowvnFHqFHW9+I/5/pkESy6JnR9suie0PklRqopwZrrk0Vw6prQ9cmitoOt1pvrDSjrjmMYO/5mQbfO2HJ+suic0P0OlHHHhO7v7XdN6Pxk0ahl3SBOR9wJ6hS5rij9QylN/hgP1f907Pp0GFwnlfe76XRfod6K0/L7v//FHaCVEXHw0PmfoNb8T7hDQvE2L5vQ9ZVRewfiOwNIKMfB/6uUetJ4s49/ID6HIfM4rMmB2MvQIjsVTCL/ExKngD1KmBAJJR7aNoqIdhP/E+YyX3cNqL42JJSDOp3n/sqhLSph7sc57oA+Q4qEclAfjfAnYeB/QuJDZkPn9yisvUBC81XqeLtzE0TC3J+EH96PIZXQ+b1Ca8TWNxIKQrSgZG4fjmkCCeUjmt0y15v07Pmf8ERcpdx19ecFEhJXKXdd/SGav5FQECKh6+d/GiASau66+mM+ZhIr7rr6szC2X75AwpS7rv4sfg1NPHqWbkZm3HUBAAAAAAAAAAAAAAAAAAAAAAAAAACARL8Bg+g4j6yMGG4AAAAASUVORK5CYII=">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+    body {
+      color: #212b36;
+      font-family: 'ubuntu';
+      margin: 0px;
+    }
+
+    .my-container {
+      background: linear-gradient(#D3D8E8, #f5f5f5);
+      min-height: calc(100vh - 5em);
+      padding: 10vh 0px !important;
+    }
+
+    .top-nav {
+      background-color: #563d7c;
+      padding-right: 0px;
+      margin: 0px;
+    }
+
+    .top-nav h3 {
+      margin-bottom: 20px;
+      color: #f5f5f5;
+    }
+
+    .button-group {
+      color: #f5f5f5;
+      font-size: 20px;
+      margin-top: 15px;
+      padding: 0px;
+    }
+
+    .button-group span {
+      padding: 5px 20px;
+      cursor: pointer;
+      display: table-cell;
+    }
+
+    .button-group span:after {
+      display: block;
+      content: '';
+      border-bottom: solid 3px #019fb6;
+      transform: scaleX(0);
+      transition: transform 250ms ease-in-out;
+    }
+
+    .button-group span:hover:after {
+      transform: scaleX(1);
+    }
+
+    #landing-div {
+      text-align: center;
+      padding-top: 5vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #landing-div span:first-child {
+      color: #0e385f;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 29px;
+      word-spacing: -1px;
+      margin-bottom: 50px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 3px;
+      box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.06), 0 0 3px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-title {
+      text-align: center;
+      width: 100%;
+    }
+
+    .card-title h4 {
+      font-weight: 600;
+    }
+
+    .prof-img {
+      text-align: center;
+      margin: 15px 0px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .feed-content h5 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .no-padding {
+      padding: 0px;
+    }
+
+    .sm-img img {
+      height: 150px;
+    }
+
+    .pull-right {
+      text-align: right;
+    }
+
+    *::-webkit-scrollbar {
+      width: 14px;
+      height: 14px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background-color: #f5f5f5;
+      border: solid 1px rgb(231, 231, 231);
+    }
+
+    *::-webkit-scrollbar-thumb {
+      border: 3px solid rgba(0, 0, 0, 0);
+      background-color: #919eab;
+      outline: none;
+      background-clip: padding-box;
+      border-radius: 50px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 no-padding">
+    <div class="row top-nav col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <h3>Facebook API demo</h3>
+      </div>
+      <div class="button-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="pull-right">
+          <span id="landing">Home</span>
+          <span id="profile-info">Profile Info</span>
+          <span id="news-feed">News Feed</span>
+        </div>
+      </div>
+    </div>
+    <div class="my-container col-sm-12 col-md-12 col-lg-12 col-xl-12 no-padding">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="landing-div">
+        <span>
+          Facebook helps you connect and share with the people in your life.
+        </span>
+        <span class="hidden-sm hidden-xs">
+          <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/GwFs3_KxNjS.png" />
+        </span>
+        <span class="visible-sm visible-xs sm-img">
+          <img src="https://i.kym-cdn.com/entries/icons/mobile/000/002/048/facebook.jpg" />
+        </span>
+      </div>
+      <div id="leftspace"></div>
+      <div class="card" id="datacard">
+        <span class="card-title"></span>
+        <span class="prof-img"></span>
+        <span class="card-content"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+
+</body>
+
+
+</html>
